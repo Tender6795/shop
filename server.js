@@ -4,6 +4,8 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import bluebird from 'bluebird';
+import authRoute from './routes/auth'
+
 
 import config from "./config";
 import errorHandler from './middlewares/errorHandler';
@@ -38,7 +40,10 @@ app.use(session({
   secret: config.secret
 }));
 
+app.use('/api',authRoute);
 
 app.use(errorHandler);
+
+
 
 export default server;

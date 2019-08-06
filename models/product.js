@@ -24,10 +24,7 @@ const ProductSchema=new Schema({
     type: SchemaTypes.Double,
     default:0,
   }
-},
-  {timestamps: true,},
-  { _id : false }
-  );
+}, {timestamps: true,});
 
 ProductSchema.pre('save', function (next) {
   if (!this.hash) {
