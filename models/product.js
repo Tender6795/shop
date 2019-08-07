@@ -2,8 +2,8 @@ import mongoose, {Schema} from 'mongoose';
 import uuid from 'uuid/v4';
 import uniqueValidator from 'mongoose-unique-validator';
 mongoose.plugin(uniqueValidator);
-require('mongoose-double')(mongoose);
-const SchemaTypes = mongoose.Schema.Types;
+
+
 
 
 const ProductSchema=new Schema({
@@ -18,10 +18,10 @@ const ProductSchema=new Schema({
     trim: true,
   },
   price:{
-    type: SchemaTypes.Double,
+    type: Number,
   },
   discount:{
-    type: SchemaTypes.Double,
+    type: Number,
     default:0,
   }
 }, {timestamps: true,});

@@ -4,8 +4,10 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import bluebird from 'bluebird';
-import authRoute from './routes/auth'
 
+import authRoute from './routes/auth';
+import orderRoute from './routes/order';
+import productRoute from './routes/product'
 
 import config from "./config";
 import errorHandler from './middlewares/errorHandler';
@@ -41,6 +43,8 @@ app.use(session({
 }));
 
 app.use('/api',authRoute);
+app.use('/api',productRoute);
+app.use('/api',orderRoute);
 
 app.use(errorHandler);
 
