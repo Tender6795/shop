@@ -30,12 +30,12 @@ const PersonalSchema = new Schema({
   },
   firstName: {
     type: String,
-    lowercase: true,
+    // lowercase: true,
     trim: true,
   },
   lastName: {
     type: String,
-    lowercase: true,
+    // lowercase: true,
     trim: true,
   },
 
