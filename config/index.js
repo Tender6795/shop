@@ -3,4 +3,5 @@ const config={
   port:4000,
   secret:"verysecretkey",
 };
+
 export default config;
