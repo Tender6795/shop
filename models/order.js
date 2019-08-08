@@ -8,23 +8,25 @@ const OrderSchema = new Schema({
       type: String,
       unique: 'Hash mast be unique',
     },
-    name:{
+    hashProduct: {
       type: String,
-      lowercase: true,
-      trim: true,
+      unique: 'Hash mast be unique',
     },
-    price:{
-      type: Number,
-    },
-    discount:{
-      type: Number,
-      default:0,
-    },
+    // name:{
+    //   type: String,
+    //   lowercase: true,
+    //   trim: true,
+    // },
+    // price:{
+    //   type: Number,
+    // },
+    // discount:{
+    //   type: Number,
+    //   default:0,
+    // },
     toPay:{
       type: Number,
     },
-
-
     isDone: {
       type: Boolean,
       default: false,

@@ -6,16 +6,16 @@ export const create = async (req, res, next) => {
   let order;
   let product;
   try {
-    product = await Product.findOne({hash});
+     product = await Product.findOne({hash});
     let orderTmp = {};
-    orderTmp.name = product.name;
-    orderTmp.price = product.price;
-    orderTmp.discount=0;
+    orderTmp.hashProduct = hash;
+   // orderTmp.price = product.price;
+       let discount=0;
 
     if (  discountFromTime( new Date(product["createdAt"]))) {
       orderTmp.discount = 20;
     }
-    orderTmp.toPay = (product['price'] * (100 -orderTmp.discount)) / 100;
+    orderTmp.toPay = (product['price'] * (100 -discount)) / 100;
 
     order = await Order.create(orderTmp);
 
