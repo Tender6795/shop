@@ -12,12 +12,7 @@ export const create = async (req, res, next) => {
     orderTmp.price = product.price;
     orderTmp.discount=0;
 
-    const date = new Date(product["createdAt"]);
-    const today = new Date();
-    const timeDiff = Math.abs(date.getTime() - today.getTime());
-    const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-    if (diffDays >= 31) {
+    if (  discountFromTime( new Date(product["createdAt"]))) {
       orderTmp.discount = 20;
     }
     orderTmp.toPay = (product['price'] * (100 -orderTmp.discount)) / 100;
@@ -33,3 +28,14 @@ export const create = async (req, res, next) => {
   }
   res.json(order);
 };
+
+function discountFromTime(date) {
+
+  const today = new Date();
+  const timeDiff = Math.abs(date.getTime() - today.getTime());
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    return diffDays >= 31;
+
+
+}
