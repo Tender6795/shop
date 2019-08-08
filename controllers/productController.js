@@ -16,18 +16,18 @@ export const create=async (req,res,next)=>{
 };
 
 export const update=async (req,res,next)=>{
-  let product;
+
   let {hash} = req.params;
   try{
     const productTmp=req.body;
-    product=await Product.findOneAndUpdate({hash: hash },productTmp);
+    await Product.findOneAndUpdate({hash: hash },productTmp);
   } catch ({message}) {
     next({
       status: 400,
       message
     });
   }
-  res.json(product);
+  res.json("Done");
 };
 
 export const deleteProduct=async (req,res,next)=>{

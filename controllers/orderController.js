@@ -29,6 +29,23 @@ export const create = async (req, res, next) => {
   res.json(order);
 };
 
+
+export const done = async (req, res, next) => {
+  let {hash} = req.params;
+
+  try{
+    await Order.findOneAndUpdate({hash: hash },{isDone:true});
+  } catch ({message}) {
+    next({
+      status: 400,
+      message
+    });
+  }
+  res.json("Done");
+};
+
+
+
 function discountFromTime(date) {
 
   const today = new Date();
