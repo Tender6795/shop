@@ -21,10 +21,7 @@ const ProductSchema=new Schema({
   price:{
     type: Number,
   },
-  discount:{
-    type: Number,
-    default:0,
-  }
+
 }, {timestamps: true,});
 
 ProductSchema.pre('save', function (next) {

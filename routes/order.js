@@ -4,7 +4,7 @@ import isCashier from '../middlewares/isCashier'
 
 const router =express.Router();
 
-router.post('/createOrder',isCashier,OrderController.create);
+router.get('/order/:hash',isCashier,OrderController.create);
 
 
 export default router;
