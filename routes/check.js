@@ -1,5 +1,5 @@
 import express from 'express';
-import * as ChechController from '../controllers/checkController';
+import * as CheckController from '../controllers/checkController';
 import isCashier from '../middlewares/isCashier'
 
 
@@ -7,6 +7,6 @@ import isCashier from '../middlewares/isCashier'
 const router =express.Router();
 
 
-router.get('/check/:hash',isCashier,ChechController.createCheck);
+router.post('/check/:hash',isCashier,CheckController.createCheck);
 
 export default router;

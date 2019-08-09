@@ -8,6 +8,6 @@ const router =express.Router();
 
 router.post('/order/:hash',isCashier,OrderController.create);
 router.patch('/order/:hash',isShopAssistant,OrderController.done);
-
+router.patch('/order/paid/:hash',isCashier,OrderController.paid);
 
 export default router;

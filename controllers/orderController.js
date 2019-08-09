@@ -43,7 +43,19 @@ export const done = async (req, res, next) => {
   res.json("Done");
 };
 
+export const paid = async (req, res, next) => {
+  let {hash} = req.params;
 
+  try {
+    await Order.findOneAndUpdate({hash}, {isPaid: true});
+  } catch ({message}) {
+    next({
+      status: 400,
+      message
+    });
+  }
+  res.json("Done");
+};
 
 
 
