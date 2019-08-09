@@ -12,18 +12,7 @@ const OrderSchema = new Schema({
       type: String,
       unique: 'Hash mast be unique',
     },
-    // name:{
-    //   type: String,
-    //   lowercase: true,
-    //   trim: true,
-    // },
-    // price:{
-    //   type: Number,
-    // },
-    // discount:{
-    //   type: Number,
-    //   default:0,
-    // },
+
     toPay:{
       type: Number,
     },
