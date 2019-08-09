@@ -7,16 +7,12 @@ import bluebird from 'bluebird';
 
 import authRoute from './routes/auth';
 import orderRoute from './routes/order';
-import productRoute from './routes/product'
+import productRoute from './routes/product';
+import checkRoute from './routes/check';
 
 import config from "./config";
 import errorHandler from './middlewares/errorHandler';
-import checkToken from './middlewares/checkToken';
 
-// import authRoute from './routes/auth'
-// import userRoute from './routes/user'
-// import articleRoute from './routes/article'
-// import commentRoute from './routes/comment'
 
 
 const app = express();
@@ -45,6 +41,7 @@ app.use(session({
 app.use('/api',authRoute);
 app.use('/api',productRoute);
 app.use('/api',orderRoute);
+app.use('/api',checkRoute);
 
 app.use(errorHandler);
 

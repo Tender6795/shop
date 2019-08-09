@@ -10,7 +10,6 @@ const OrderSchema = new Schema({
     },
     hashProduct: {
       type: String,
-      unique: 'Hash mast be unique',
     },
 
     toPay:{
@@ -20,10 +19,13 @@ const OrderSchema = new Schema({
       type: Boolean,
       default: false,
     },
+    isPaid: {
+      type: Boolean,
+      default: false,
+    },
 
   },
   {timestamps: true,},
-  {_id: false}
 );
 
 OrderSchema.pre('save', function (next) {

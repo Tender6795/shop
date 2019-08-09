@@ -35,11 +35,12 @@ const PersonalSchema = new Schema({
   },
   lastName: {
     type: String,
-    // lowercase: true,
+
     trim: true,
   },
 
-});
+},
+  {timestamps: true},);
 
 PersonalSchema.methods.comparePasswords = function (password) {
   const HashPass = crypto.createHash('sha256').update(password).digest('base64');

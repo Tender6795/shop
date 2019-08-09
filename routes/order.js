@@ -6,8 +6,8 @@ import isShopAssistant from '../middlewares/isShopAssistant';
 
 const router =express.Router();
 
-router.get('/order/:hash',isCashier,OrderController.create);
+router.post('/order/:hash',isCashier,OrderController.create);
 router.patch('/order/:hash',isShopAssistant,OrderController.done);
-router.get('/order/check/:hash',isCashier,OrderController.createCheck);
+
 
 export default router;
