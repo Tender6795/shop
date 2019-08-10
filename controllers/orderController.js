@@ -1,6 +1,6 @@
 import Order from "../models/order";
 import Product from "../models/product";
-
+import moment from 'moment';
 
 export const create = async (req, res, next) => {
   let {hash} = req.params;
@@ -55,6 +55,48 @@ export const paid = async (req, res, next) => {
     });
   }
   res.json("Done");
+};
+
+
+export const getOrdersByDates = async (req, res, next) => {
+  let {date1,date2} = req.params;
+  console.log(date1);
+  console.log(date2);
+
+  if(moment(date1).isValid() &&
+     moment(date2).isValid()){      //validation of date
+
+    let orders=[];
+
+    if((moment(date1).isAfter(date2))){
+      orders=await  Order.find({"createdAt": {
+          '$gte':date2,
+          '$lt':moment(date1).add('days', 1),//including date on what date
+        }});
+    }
+    else if((moment(date2).isAfter(date1))){
+    orders=await  Order.find({"createdAt": {
+          '$gte':date1,
+          '$lt':moment(date2).add('days', 1),
+        }});
+    }else{
+      orders=await  Order.find({"createdAt": {
+          '$gte':date1,
+          '$lt':moment(date1).add('days', 1),
+        }});
+    }
+// console.dir(orders);
+    res.json(orders);
+  }
+  else{
+    next({
+      status: 400,
+     message:'enter valid dates',
+    });
+    res.json("InValid");
+  }
+
+
 };
 
 
