@@ -3,11 +3,11 @@ import Product from "../models/product";
 import Check from "../models/check";
 
 export const createCheck = async (req, res, next) => {
-  const {hash} = req.params;
+  const {_id} = req.params;
   let check;
   let checkTmp = {};
   try {
-    let order = await Order.findOne({hash});
+    let order = await Order.findOne({_id});
     let product = await Product.findOne({hash: order.hashProduct});
     checkTmp.productName = product.name;
     checkTmp.toPay = order.toPay;

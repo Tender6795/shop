@@ -8,10 +8,10 @@ mongoose.plugin(uniqueValidator);
 
 
 const ProductSchema=new Schema({
-  hash: {
-    type: String,
-    unique: 'Hash mast be unique',
-  },
+  // hash: {
+  //   type: String,
+  //   unique: 'Hash mast be unique',
+  // },
   name:{
     type: String,
     unique: 'Product with name "{VALUE}" already exist',
@@ -24,11 +24,11 @@ const ProductSchema=new Schema({
 
 }, {timestamps: true,});
 
-ProductSchema.pre('save', function (next) {
-  if (!this.hash) {
-    this.hash = uuid();
-  }
-  next();
-});
+// ProductSchema.pre('save', function (next) {
+//   if (!this.hash) {
+//     this.hash = uuid();
+//   }
+//   next();
+// });
 
 export default mongoose.model('product', ProductSchema);

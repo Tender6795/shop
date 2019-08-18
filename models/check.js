@@ -4,10 +4,10 @@ import uuid from 'uuid/v4';
 
 const CheckSchema = new Schema({
 
-    hash: {
-      type: String,
-      unique: 'Hash mast be unique',
-    },
+    // hash: {
+    //   type: String,
+    //   unique: 'Hash mast be unique',
+    // },
     productName: {
       type: String,
     },
@@ -23,11 +23,11 @@ const CheckSchema = new Schema({
   {timestamps: true},
 );
 
-CheckSchema.pre('save', function (next) {
-  if (!this.hash) {
-    this.hash = uuid();
-  }
-  next();
-});
+// CheckSchema.pre('save', function (next) {
+//   if (!this.hash) {
+//     this.hash = uuid();
+//   }
+//   next();
+// });
 
 export default mongoose.model('check', CheckSchema);

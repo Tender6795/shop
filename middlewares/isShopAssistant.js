@@ -12,8 +12,8 @@ export default async(req,res,next)=> {
   }
   let personal;
   try {
-    var {hash} = jwt.verify(token, config.secret);
-    personal = await Personal.findOne({hash}, {password: 0});
+    var {_id} = jwt.verify(token, config.secret);
+    personal = await Personal.findOne({_id}, {password: 0});
   } catch ({message}) {
     return next({
       status: 400,

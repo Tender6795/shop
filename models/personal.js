@@ -19,10 +19,10 @@ const PersonalSchema = new Schema({
     default: 'cashier',
     lowercase: true,
   },
-  hash: {
-    type: String,
-    unique: 'Hash mast be unique',
-  },
+  // hash: {
+  //   type: String,
+  //   unique: 'Hash mast be unique',
+  // },
   password: {
     type: String,
     required: 'Password is required',
@@ -53,9 +53,9 @@ PersonalSchema.pre('save', function (next) {
     const password = crypto.createHash('sha256').update(this.password).digest('base64');
     this.password = password;
   }
-  if (!this.hash) {
-    this.hash = uuid();
-  }
+  // if (!this.hash) {
+  //   this.hash = uuid();
+  // }
 
   next();
 });

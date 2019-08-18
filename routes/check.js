@@ -7,6 +7,6 @@ import isCashier from '../middlewares/isCashier'
 const router =express.Router();
 
 
-router.post('/check/:hash',isCashier,CheckController.createCheck);
+router.post('/check/:_id',isCashier,CheckController.createCheck);
 
 export default router;

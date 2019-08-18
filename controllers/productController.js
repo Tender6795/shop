@@ -17,10 +17,10 @@ export const create=async (req,res,next)=>{
 
 export const update=async (req,res,next)=>{
 
-  let {hash} = req.params;
+  let {_id} = req.params;
   try{
     const productTmp=req.body;
-    await Product.findOneAndUpdate({hash: hash },productTmp);
+    await Product.findOneAndUpdate({_id },productTmp);
   } catch ({message}) {
     next({
       status: 400,
@@ -32,8 +32,9 @@ export const update=async (req,res,next)=>{
 
 export const deleteProduct=async (req,res,next)=>{
   let product;
+  let {_id} = req.params;
   try{
-    product=await Product.findOneAndRemove({hash: req.params.hash});
+    product=await Product.findOneAndRemove({_id});
   } catch ({message}) {
     next({
       status: 400,

@@ -41,7 +41,7 @@ export const signin = async (req, res, next) => {
     });
   }
 
-  const token=jwt.sign({hash: personal.hash,
+  const token=jwt.sign({_id: personal._id,
     role:personal.role},config.secret);
   res.json(token);
 };

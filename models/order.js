@@ -4,11 +4,11 @@ import {ProductSchema} from './product'
 
 
 const OrderSchema = new Schema({
-    hash: {
-      type: String,
-      unique: 'Hash mast be unique',
-    },
-    hashProduct: {
+    // hash: {
+    //   type: String,
+    //   unique: 'Hash mast be unique',
+    // },
+    idProduct: {
       type: String,
     },
 
@@ -28,11 +28,11 @@ const OrderSchema = new Schema({
   {timestamps: true,},
 );
 
-OrderSchema.pre('save', function (next) {
-  if (!this.hash) {
-    this.hash = uuid();
-  }
-  next();
-});
+// OrderSchema.pre('save', function (next) {
+//   if (!this.hash) {
+//     this.hash = uuid();
+//   }
+//   next();
+// });
 
 export default mongoose.model('order', OrderSchema);

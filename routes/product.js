@@ -5,8 +5,8 @@ import * as ProductController from '../controllers/productController';
 const router = express.Router();
 
 router.post('/product', ProductController.create)
-      .patch('/product/:hash', ProductController.update)
-      .delete('/product/:hash', ProductController.deleteProduct);
+      .patch('/product/:_id', ProductController.update)
+      .delete('/product/:_id', ProductController.deleteProduct);
 
 
 export default router;

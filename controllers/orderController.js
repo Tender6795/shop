@@ -3,12 +3,12 @@ import Product from "../models/product";
 import moment from 'moment';
 
 export const create = async (req, res, next) => {
-  let {hash} = req.params;
+  let {_id} = req.params;
   let order;
   try {
-  let  product = await Product.findOne({hash});
+  let  product = await Product.findOne({_id});
     let orderTmp = {};
-    orderTmp.hashProduct = hash;
+    orderTmp.idProduct = _id;
     let discount = 0;
 
     if (discountFromTime(new Date(product.createdAt))) {
@@ -30,10 +30,10 @@ export const create = async (req, res, next) => {
 
 
 export const done = async (req, res, next) => {
-  let {hash} = req.params;
+  let {_id} = req.params;
 
   try {
-    await Order.findOneAndUpdate({hash}, {isDone: true});
+    await Order.findOneAndUpdate({_id}, {isDone: true});
   } catch ({message}) {
     next({
       status: 400,
@@ -44,10 +44,10 @@ export const done = async (req, res, next) => {
 };
 
 export const paid = async (req, res, next) => {
-  let {hash} = req.params;
+  let {_id} = req.params;
 
   try {
-    await Order.findOneAndUpdate({hash}, {isPaid: true});
+    await Order.findOneAndUpdate({_id}, {isPaid: true});
   } catch ({message}) {
     next({
       status: 400,
