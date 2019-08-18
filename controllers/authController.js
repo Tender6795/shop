@@ -9,7 +9,7 @@ export const signup = async (req, res, next) => {
   try {
     personal = await Personal.create(credentials);
   } catch ({message}) {
-    console.log(message);
+
     next({
       status: 400,
       message
