@@ -1,6 +1,5 @@
 import mongoose, {Schema} from 'mongoose';
 import uniqueValidator from 'mongoose-unique-validator';
-import uuid from 'uuid/v4';
 
 var crypto = require('crypto');
 mongoose.plugin(uniqueValidator);
@@ -19,10 +18,7 @@ const PersonalSchema = new Schema({
     default: 'cashier',
     lowercase: true,
   },
-  // hash: {
-  //   type: String,
-  //   unique: 'Hash mast be unique',
-  // },
+
   password: {
     type: String,
     required: 'Password is required',
@@ -30,12 +26,10 @@ const PersonalSchema = new Schema({
   },
   firstName: {
     type: String,
-    // lowercase: true,
     trim: true,
   },
   lastName: {
     type: String,
-
     trim: true,
   },
 
@@ -53,9 +47,7 @@ PersonalSchema.pre('save', function (next) {
     const password = crypto.createHash('sha256').update(this.password).digest('base64');
     this.password = password;
   }
-  // if (!this.hash) {
-  //   this.hash = uuid();
-  // }
+
 
   next();
 });

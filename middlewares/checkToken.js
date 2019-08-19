@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 import config from '../config'
 
 export default async(req,res,next)=>{
-  console.log("checkToken");
   const token=req.headers['authorization'];
   if(!token){
     return next({
